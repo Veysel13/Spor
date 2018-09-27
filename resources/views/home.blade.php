@@ -20,6 +20,6 @@
         </div>
     </div>
 </div>
-
+<!-- yenı deger-->
 <!-- sdsdsd-->
 @endsection
