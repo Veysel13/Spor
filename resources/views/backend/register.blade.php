@@ -21,7 +21,8 @@
                 <div class="tagline"><span>Kayıt Yönetim Paneli </span></div><!-- .tagline -->
             </div>
 
-            <div class="alert alert-success">
+
+           <div class="alert alert-success">
                Sisteme kayıt işlemleri yetkili tarafından yapılmaktadır
             </div>
             <div class="alert alert-success">

@@ -168,6 +168,7 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::group(['middleware' => 'Yetkili'], function () {
 
 //ılk defa plan olusturmka ıcın
+        //ikincisi post tu get yaptım
         Route::get('/egzersizplan', 'Hareketcontroller@get_egzersizplan');
         Route::post('/egzersizplan_session', 'Hareketcontroller@post_egzersizplan');
         Route::post('/sessionhareket_plan/kaydet/', 'Hareketcontroller@post_session_kaydet');
@@ -186,7 +187,7 @@ Route::group(['middleware' => 'Admin'], function () {
         //hazır egzersiz planı olusturmk   ıcın
         Route::get('/hazir/egzersizplan', 'Hareketcontroller@get_hazir_egzersizplan');
         Route::post('/hazir/egzersizplan_session', 'Hareketcontroller@post_hazir_egzersizplan');
-        Route::post('/hazir/sessionhareket_plan/kaydet/', 'Hareketcontroller@post_session__hazir_kaydet');
+        Route::post('/hazir/sessionhareket_plan/kaydet', 'Hareketcontroller@post_session__hazir_kaydet');
         Route::get('hazir/egzersizplan/iptalet', 'Hareketcontroller@get_session_hazirplan_iptalet');
         //Route::get('/hareketplan','Hareketcontroller@get_hareketplan');
 
@@ -213,7 +214,7 @@ Route::group(['middleware' => 'Admin'], function () {
 
 
     Route::get('/hasta_liste/plan/guncelle/{sayi?}/{id?}', 'Hareketcontroller@get_hastaliste_plan_guncelle');
-    Route::get('/egzersizplan_session/{sayi?}/{hasta_id?}', 'Hareketcontroller@post_egzersizplan_guncelleme');
+    Route::post('/egzersizplan_session/{sayi?}/{hasta_id?}', 'Hareketcontroller@post_egzersizplan_guncelleme');
 
 
     Route::get('/kayit/goruntule', 'Hareketcontroller@get_kayit_goruntule');
@@ -233,7 +234,13 @@ Route::group(['middleware' => 'Admin'], function () {
     Route::get('/planlamaliste/goruntule/{id?}','Planlamacontroller@get_planlamaliste_goruntule');
 
 
+    Route::get('/antrenor/planlama/{sayi?}/{id?}', 'Planlamacontroller@get_planlama_antrenor');
+    Route::post('/antrenor/program/planlama', 'Planlamacontroller@post_planlama_antrenor');
+
+
     Route::get('/EgzersizDetay/{element?}','Hareketcontroller@get_egzersizdetay');
+
+    Route::get('/son/plan/goruntule/{sayi?}/{id?}', 'Hareketcontroller@son_plan_goruntule');
 
 });
 

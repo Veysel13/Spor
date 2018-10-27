@@ -172,6 +172,7 @@
                                                 <th>Hasta Adı</th>
                                                 <th>Eklenme Zamanı</th>
                                                 <th>Görüntüle</th>
+                                                <th>Planlama</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -203,11 +204,19 @@
                                                     <td>{{$ekleyen->name}}@if($ekleyen->yetki==1)(Admin)@elseif($ekleyen->yetki==2) (Doktor) @elseif($ekleyen->id==3) (Fizto Terapist) @endif</td>
                                                     <td>{{$planlar[$i][0]->program_adi}}</td>
                                                     <td>{{$hasta_id->hasta_ad." ".$hasta_id->hasta_soyad}}</td>
-
                                                     <td>{{$planlar[$i][0]->created_at}}</td>
 
 
-                                                    <td><a href="{{url('/hasta_liste/plan/goruntule/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-primary">Görüntüle</a></td>
+                                                    <td>
+                                                        <a href="{{url('/hasta_liste/plan/goruntule/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-primary">Görüntüle</a>
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="{{url('/antrenor/planlama/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-primary btn-sm">Progam Çizelgesi</a>
+                                                    </td>
+
+                                                    <td><a href="{{url('/son/plan/goruntule/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-warning btn-sm">Progam</a></td>
+
 
                                                 </tr>
 

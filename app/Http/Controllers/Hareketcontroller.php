@@ -41,6 +41,58 @@ use Dompdf\Dompdf;
 class Hareketcontroller extends Controller
 {
 
+    public function son_plan_goruntule ($sayi, $id)
+    {
+
+        $kategoriler = Egzersizkategori::where('kategori_ust', 0)->get();
+
+        $egzersiz_kategorileri = [];
+        foreach ($kategoriler as $kategori) {
+
+            array_push($egzersiz_kategorileri, $kategori->kategori_ad);
+
+        }
+
+
+        $egzersiz_kategorileri_id = [];
+        $i = 0;
+        foreach ($kategoriler as $kategori) {
+            $idler = Egzersizkategori::where('kategori_ad', $egzersiz_kategorileri[$i])->first();
+            array_push($egzersiz_kategorileri_id, $idler->id);
+            $i++;
+
+        }
+
+        $yorum = Setyorum::where('hasta_id', $id)->where('plan_sayisi', $sayi)->where('aktif', 1)->first();
+
+        $hastaya_atanan_setler = Planlama::where('hasta_id', $id)->where('plan_numarasi', $sayi)->where('aktif', 1)->get();
+
+
+        $setler_pazartesi = Planlama::where('hasta_id', $id)->where('plan_numarasi', $sayi)->where('pazartesi','1')->where('aktif', 1)->get();
+        $setler_sali = Planlama::where('hasta_id', $id)->where('plan_numarasi', $sayi)->where('sali','1')->where('aktif', 1)->get();
+        $setler_carsamba = Planlama::where('hasta_id', $id)->where('plan_numarasi', $sayi)->where('carsamba','1')->where('aktif', 1)->get();
+        $setler_persembe = Planlama::where('hasta_id', $id)->where('plan_numarasi', $sayi)->where('persembe','1')->where('aktif', 1)->get();
+        $setler_cuma = Planlama::where('hasta_id', $id)->where('plan_numarasi', $sayi)->where('cuma','1')->where('aktif', 1)->get();
+        $setler_cumartesi = Planlama::where('hasta_id', $id)->where('plan_numarasi', $sayi)->where('cumartesi','1')->where('aktif', 1)->get();
+        $setler_pazar = Planlama::where('hasta_id', $id)->where('plan_numarasi', $sayi)->where('pazar','1')->where('aktif', 1)->get();
+
+
+        if(isset($_GET['mesajbildirim_id'])){
+
+
+            $bildirim = Bildirimler::find($_GET['mesajbildirim_id']);
+
+            $bildirim->update([
+                'mesaj_durum'=>1
+            ]);
+
+            $bildirim->save();
+        }
+
+        return view('backend.son_program', compact('sayi', 'id', 'egzersiz_kategorileri_id', 'yorum', 'hastaya_atanan_setler','setler_pazartesi','setler_sali','setler_carsamba','setler_persembe','setler_cuma','setler_cumartesi','setler_pazar'));
+    }
+
+
     public function get_egzersizdetay($element){
 
         $ad=trim($element);
@@ -843,6 +895,9 @@ class Hareketcontroller extends Controller
                     'plan_numarasi' => $plan_sayisi,
                     'egzersiz_isim' => $veriler['egzersiz-' . $i],
                     'haftalik_tekrar' => $veriler['haftalik_tekrar-' . $i],
+                    'set'=>$veriler['set-' . $i],
+                    'tekrar'=>$veriler['tekrar-' . $i],
+                    'dinlenme'=>$veriler['dinlenme-' . $i],
                     'aktif' => 1
                 ]);
             }
@@ -856,9 +911,8 @@ class Hareketcontroller extends Controller
         $hasta_id = $veriler['hasta_id'];
         $hasta = Hastalar::where('aktif', 1)->where('id', $hasta_id)->first();
 
-        return view('backend.hasta_hareket_goruntule', compact('hasta_id', 'hasta'));
-
-
+        //return view('backend.hasta_hareket_goruntule', compact('hasta_id', 'hasta'));
+        return redirect('/hasta_liste/guncelle/'.$hasta_id);
     }
 
 
@@ -1579,9 +1633,10 @@ class Hareketcontroller extends Controller
 
     }
 
-
+//$sayi
     public function post_egzersizplan_guncelleme (Request $request, $sayi, $hasta_id)
     {
+
 
         $zaman = Carbon::now();
 
@@ -1689,6 +1744,12 @@ class Hareketcontroller extends Controller
             $i++;
 
         }
+
+
+       // print_r($id);
+       // print_r($egzersiz_kategorileri_id);
+        //die();
+
 
 
         // return ['result'=>"dogru"];

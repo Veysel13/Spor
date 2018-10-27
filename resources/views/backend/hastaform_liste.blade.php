@@ -14,7 +14,7 @@
 
                 <form  method="" action="{{url('/hastakayitformu')}}">
                     <div align="right" class="col-md-6 col-sm-6 col-xs-12">
-                        <button  type="submit" class="btn btn-warning bnt-xs">Hasta Ekle</button>
+                        <button style="margin-bottom: 30px;" type="submit" class="btn btn-warning bnt-xs">Hasta Ekle</button>
                     </div>
                 </form>
 
@@ -71,11 +71,11 @@
                             <table id="data-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
-                                    <th>S.No</th>
+                                    <th >S.No</th>
 
                                     <th>Ekleyen</th>
                                     <th>Hasta İsmi</th>
-                                    <th>Eklenme Zamanı</th>
+                                    <th class="eklenmezamani">Eklenme Zamanı</th>
                                     <th>Sil</th>
                                     <th>Görüntüle</th>
 
@@ -98,14 +98,14 @@
                                             $gonderen_id=$hasta->ekleyen_id;
                                             $id=App\User::find($gonderen_id);
                                             ?>
-                                            <td>{{$say}}</td>
+                                            <td >{{$say}}</td>
                                             <td>{{$id->name}}</td>
 
                                             <td>{{$hasta->hasta_ad." ".$hasta->hasta_soyad}}</td>
 
                                             <?php $zaman=$hasta->created_at;
                                             $zaman->setlocale('tr');?>
-                                            <td>{{$zaman->diffForHumans()}}</td>
+                                            <td class="eklenmezamani" > {{$zaman->diffForHumans()}}</td>
 
                                                 <div style="display:none">
                                                     <form action="{{url('/hasta_liste/sil')}}" method="POST" id="silme_form">
@@ -139,7 +139,7 @@
 
                                             <?php $zaman=$hasta->created_at;
                                             $zaman->setlocale('tr');?>
-                                            <td>{{$zaman->diffForHumans()}}</td>
+                                            <td  class="eklenmezamani">{{$zaman->diffForHumans()}}</td>
 
                                                 <div style="display:none">
                                                     <form action="{{url('/hasta_liste/sil')}}" method="POST" id="silme_form">
@@ -179,6 +179,17 @@
     <link href="/Back/linearicons/fonts.css" rel="stylesheet">
     <link href="/Back/css/style.css" rel="stylesheet">
 
+
+    <style>
+        @media (min-width:100px ) and (max-width:576px) {
+
+
+            .eklenmezamani{
+                display: none;
+            }
+
+        }
+    </style>
 
 @endsection
 

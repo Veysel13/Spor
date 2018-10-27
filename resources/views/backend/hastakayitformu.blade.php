@@ -28,6 +28,9 @@
         <h3>Kişisel Bilgiler</h3>
 
 
+            <div class="container">
+                <div class="row">
+
 
         <form action="{{url('/hastakayitformu')}}" method="post">
 
@@ -48,7 +51,7 @@
             @endif
 
             {{csrf_field()}}
-        <div id="formmusteri" class="container">
+        <div id="formmusteri" class="container col-md-6 col-sm-12 col-12">
 
             <div  id="image" onclick="openKCFinder(this)"><div style="margin:5px">Resim Yuklemek Icin Tiklayiniz...</div></div>
 
@@ -86,7 +89,8 @@
 
 
 
-        <div id="tabmenu1" class="card">
+
+        <div id="tabmenu1" class="card col-md-6 col-sm-7 col-12">
             <div>
 
                 <!-- Nav tabs -->
@@ -172,11 +176,13 @@
 
                 </div></div>
         </div>
+
             <br> <br>
                     <input type="submit" value="Kayit">
         </form>
 
-
+                </div>
+            </div>
                 </div><!--content-->
 
 
@@ -270,6 +276,15 @@
 
         }
 
+        @media (max-width:768px ){
+            #tabmenu1 {
+                height: 550px;
+                left: -17px;
+                top: 20px;
+                background-color: rgba(21, 99, 111, 0.11);
+                border-radius: 10px;
+            }
+        }
 
 
 

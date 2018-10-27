@@ -17,9 +17,7 @@
     <link href="/Back/linearicons/fonts.css" rel="stylesheet">
     <link href="/Back/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/danger.css">
-
     <link rel="stylesheet" href="/css/sweetalert2.min.css">
-
    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 
@@ -33,7 +31,7 @@
         <div class="sidebar-inner content-scroll">
 
             <div class="logo-header">
-                <h4>Fizyo Takip</h4>
+                <h4>Spor Takip</h4>
             </div><!--logo-->
             <ul class="metismenu" id="menu">
                 <li class="nav-heading">
@@ -41,44 +39,30 @@
                 </li>
 
                 @if(auth()->user()->yetki==1)
-
-
-
                 <li>
                     <a  href="/anasayfa" aria-expanded="false">
                         <i class="icon-home"></i>
                         <span class="nav-text">Özet Ekran</span>
                     </a>
                 </li>
-
-
-
                     <li>
                         <a  href="/kurumliste" aria-expanded="false">
                             <i class="fa fa-university"></i>
                             <span class="nav-text">Kurum Listesi</span>
                         </a>
                     </li>
-
-
                 <li>
                     <a  href="/hastalikkategoriliste" aria-expanded="false">
                         <i class="fa fa-braille"></i>
                         <span class="nav-text">Hastalik Kategori Listesi</span>
                     </a>
                 </li>
-
-
-
-
-
                 <li>
                 <a  href="/bolgelerliste" aria-expanded="false">
                     <i class="fa fa-stethoscope"></i>
                     <span class="nav-text">Bölgeler</span>
                 </a>
             </li>
-
                 <li>
                     <a  href="/eklemlerliste" aria-expanded="false">
                         <i class="fa fa-street-view"></i>
@@ -91,22 +75,18 @@
                         <span class="nav-text">Hareket Türleri</span>
                     </a>
                 </li>
-
                 <li>
                     <a  href="/hastalikliste" aria-expanded="false">
                         <i class="fa fa-heartbeat"></i>
                         <span class="nav-text">Hastalıklar</span>
                     </a>
                 </li>
-
-
                 <li>
                     <a  href="/hareketolusturliste" aria-expanded="false">
                         <i class="fa fa-child"></i>
                         <span class="nav-text">Oluşturulan Hareketler</span>
                     </a>
                 </li>
-
                 <li>
                     <a  href="/hastaliklarhareketlerliste" aria-expanded="false">
                         <i class="fa fa-heart"></i>
@@ -293,7 +273,7 @@
                             ->get();
 
                         ?>
-                        <li class="nav-item dropdown hidden-sm-down">
+                        <li class="nav-item dropdown">
                             <a data-toggle="dropdown" href="javascript:void(0)" class="btn-circle-round dropdown-toggle">
                                 <i class="icon-bubbles"></i>
                                 <span class="badge bg-success">
@@ -421,7 +401,7 @@
 
 
                         ?>
-                       <li class="nav-item dropdown hidden-sm-down">
+                       <li class="nav-item dropdown ">
                               <a data-toggle="dropdown" href="javascript:void(0)" class=" btn-circle-round dropdown-toggle">
                                   <i class="icon-bullhorn"></i>
                                   <span class="badge bg-danger"><?php echo count($bildirimler); ?></span>
@@ -531,7 +511,7 @@
                         <li class="nav-item dropdown user-item">
                             <a data-toggle="dropdown" href="javascript:void(0)" class=" dropdown-toggle">
                                <!-- <img src="images/user3.jpg" width="50" alt="" class="img-fluid rounded-circle">-->
-                                <span class="hidden-md-down">  @if(Auth::check())
+                                <span class="">  @if(Auth::check())
                                         {{auth()->user()->name}}
                                     @endif</span>
                             </a>
@@ -596,11 +576,11 @@
     <!--/////////////////////////////// End Content////////////////////////////-->
 
 
-    <footer id="footer" class="page-footer">
+    <!--<footer id="footer" class="page-footer">
         <div class="container">
-           <!-- &copy; Copyright 2018. assan-->
+           &copy; Copyright 2018. assan
         </div>
-    </footer>
+    </footer>-->
 </div><!--page wrapper-->
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <!--dashboard plugins-->
@@ -652,42 +632,6 @@
 
             }
             return false;
-
-
-            /* console.log('dsdsdsd');
-             var CSRF_TOKEN=$('meta[name="csrf-token"]').attr('content');
-             $.ajax({
-
-                 type :"GET",
-                 url: "  '/bolgelerliste/sil/'"+'/'+id,
-                 data :{
-                     'id':id,
-                     '_token':CSRF_TOKEN,
-                     'onay':onay
-
-                 },
-                 beforeSubmit:function() {
-                     swal({
-                         title:'<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>',
-                         text:'Yükleniyor lütfen bekleyiniz...',
-                         showConfirmButton:false
-                     })
-                 },
-                 success :function(response)
-                 {
-                     console.log('dsdsdsd');
-
-                     if(response.durum=='success'){
-                         document.getElementById("datatable-buttons").deleteRow(sira);
-                     }
-                     swal(
-                         response.baslik,
-                         response.icerik,
-                         response.durum
-                     );
-                 }
-
-             });*/
         });
 
     }
@@ -702,7 +646,7 @@
     $("#phone2").mask("(999) 999-9999");
 </script>
 
-//telefon maskleme ıcın
+<!--telefon maskleme ıcın-->
 <script>
     window.onload = function() {
         MaskedInput({

@@ -41,7 +41,7 @@
 
                             <div id="haftalık-tekrarlar" class="select">
 
-                                Haftalık tekrar
+                                Haftalık T. :
                                 <select name="haftalik_tekrar">
                                     <option value="">Seçiniz</option>
                                     <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 1") selected @endif @endif value="Haftada 1">Haftada 1</option>
@@ -54,9 +54,10 @@
                                 </select>
 
                             </div>
+                            <br class="asagiyaatma">
                             <div id="gunluk-tekrarlar" class="select">
 
-                                Günlük tekar
+                                Günlük T. :
                                 <select name="gunluk_tekrar">
                                     <option value="">Seçiniz</option>
                                     <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 1") selected @endif @endif value="Günde 1">Günde 1</option>
@@ -76,6 +77,11 @@
                                 <input type="number" @if(isset($settekrar)) value="{{$settekrar}}" @endif name="set_tekrar" id="setbilgisi" min="0">
 
                             </div>
+
+                            <br class="asagiyaatma">
+                            <br class="asagiyaatma">
+                            <br class="asagiyaatma">
+
                             <div id="tekrar-tekrarlar" >
 
                                 Tekrar:
@@ -83,6 +89,7 @@
 
                             </div>
 
+                            <br class="asagiyaatma">
 
                             <div id="dinlenme-tekrarlar" >
 
@@ -91,7 +98,8 @@
 
                             </div>
 
-                            <button type="submit" class="btn btn-danger btn-xs" id="tumhareketlerbutton">Tüm Hareketlere Uygula *</button>
+                            <button id="tumhareketlereuygula"  type="submit" class="btn btn-danger btn-xs" id="tumhareketlerbutton">Tüm Hareketlere Uygula *</button>
+                            <button id="tumhareketlereuygulaplus"   type="submit" id="tumhareketlerbutton" class="btn btn-danger btn-xs"><i class="fa fa-plus"></i>  *</button>
                         </div>
 
                     </form>
@@ -199,7 +207,8 @@
 
                                                 <div id="wiget">
                                                     <div >
-                                                        <img width="90" height="90" src="{{asset($egzersiz[0]->resim)}}" alt="">
+                                                        <img style="margin-left:15%; ;width:100px; height: 90px; " src="{{asset($egzersiz[0]->resim)}}" alt="">
+                                                        <img style="width:100px; height: 90px; "  src="{{asset($egzersiz[0]->resim_iki)}}" alt="">
 
                                                         <h6 align="center" class="text-black">{{$egzersiz[0]->egzersiz_isim}}</h6>
 
@@ -277,7 +286,7 @@
 
                                                             <div id="gunler" class="container left">
                                                                 <div class="row input-group">
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-6 col-sm-6 col-6">
                                                                         <label for="lebel"> Haftalık T.</label>
                                                                     <select name="haftalik_tekrar-{{$i}}">
                                                                         <option value="">Seçiniz</option>
@@ -292,7 +301,7 @@
                                                                     </div>
 
 
-                                                                            <div class="col-md-6">
+                                                                            <div class="col-md-6  col-sm-6 col-6">
                                                                                 <label for="lebel"> Günlük T.</label>
                                                                     <select name="gunluk_tekrar-{{$i}}">
                                                                         <option value="">Seçiniz</option>
@@ -665,197 +674,6 @@
         }
     </style>
 
-
-
-    //tab menuler ıcın
-
-    <style>
-
-
-
-        #wiget{
-            float: left;
-            width:280px;
-            margin-left:30px;
-            margin-bottom: 30px;
-            border-radius: 10px;
-            font-family: Arial;
-            color: black;
-
-            background-color: aliceblue;
-
-        }
-        #max-min-set{
-            width: 100px;
-            height: 30px;
-            margin-top: -30px;
-
-
-
-        }
-
-
-        #max-min-tekrar{
-            width: 100px;
-            height: 30px;
-            margin-top:-30px ;
-            margin-left: 150px;
-
-
-        }
-
-        #max-min-dinlen{
-            width: 100px;
-            height: 30px;
-            margin-top:50px ;
-            margin-left: 70px;
-
-        }
-
-        #gunler{
-            margin-top: 50px;
-
-        }
-
-        #haftalık-tekrarlar{
-
-            float: left;
-            margin-right: 50px;
-        }
-
-        #gunluk-tekrarlar{
-            margin-right: 40px;
-            margin-bottom: 25px;
-
-        }
-
-        #tum-hareketler{
-
-
-            margin-top: 30px;
-            margin-bottom: 50px;
-
-        }
-
-        .select{
-            font-family: Arial;
-            font-size: 19px;
-        }
-
-        .ui-widget{
-            font-family: Arial;
-            font-size: 17px;
-
-        }
-        #tabmenu1{
-            height: 100%;
-            width:100%;
-            left: 15px;
-            background-color: rgba(21, 99, 111, 0.11);
-            border-radius: 10px;
-        }
-
-
-        input[type=submit]:hover {
-            background-color: #76a07c;
-        }
-
-
-    </style>
-
-
-    <style>
-        #tekrarlar{
-            margin-top: 20px;
-            background-color:rgba(21, 99, 111, 0.11);
-            height: 150px;
-            padding: 5px;
-            width: 1040px;
-            border-radius: 10px;
-            color: black;
-            margin-left: 15px;
-        }
-
-        #tum-hareketler{
-            margin-top: 30px;
-            margin-bottom: 50px;
-
-        }
-
-        #haftalık-tekrarlar{
-
-            float: left;
-            margin-right: 50px;
-        }
-
-        #gunluk-tekrarlar{
-            margin-right: 40px;
-            margin-bottom: 25px;
-
-        }
-
-        #set-tekrarlar{
-            float: left;
-            color: black;
-            font-size: 20px;
-
-        }
-        #tekrar-tekrarlar{
-            float: left;
-            font-size: 20px;
-        }
-
-
-        input[id=setbilgisi]{
-            width: 138px;
-            border-radius: 8px;
-            height: 40px;
-            margin-right: 30px;
-        }
-        #dinlenme-tekrarlar{
-            float: left;
-            margin-right: 75px;
-            font-size: 20px;
-        }
-        button[id=tumhareketlerbutton]{
-
-            margin-top: -50px;
-        }
-
-        select[name=gunluk_tekrar]{
-
-            width: 200px;
-            border-radius: 8px;
-            height: 38px;
-        }
-
-
-        select[name=haftalik_tekrar]{
-
-            width: 200px;
-            height: 38px;
-            border-radius: 8px;
-        }
-
-        #hazir_plan_imi{
-            margin-top: 20px;
-            background-color:rgba(21, 99, 111, 0.11);
-            height: 100px;
-            padding: 5px;
-            width: 1040px;
-            border-radius: 10px;
-            color: black;
-            margin-left: 15px;
-            padding-top: 25px;
-        }
-
-        input[name=combobox]{
-
-            width: 250px;
-            border-radius: 8px;
-            height: 38px;
-        }
-
-    </style>
-
+    <link rel="stylesheet" href="/css/hpo.css">
+    <link rel="stylesheet" href="/css/custom.css">
 @endsection

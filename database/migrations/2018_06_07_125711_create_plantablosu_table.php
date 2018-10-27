@@ -23,6 +23,9 @@ class CreatePlantablosuTable extends Migration
             $table->integer('plan_numarasi');
             $table->string('egzersiz_isim');
             $table->string('haftalik_tekrar')->nullable();
+            $table->integer('set')->nullable()->nullable()->default(0);
+            $table->integer('tekrar')->nullable()->nullable()->default(0);
+            $table->integer('dinlenme')->nullable()->nullable()->default(0);
             $table->enum('pazartesi',array('0', '1'))->nullable()->default(0);
             $table->enum('sali',array('0', '1'))->nullable()->default(0);
             $table->enum('carsamba',array('0', '1'))->nullable()->default(0);

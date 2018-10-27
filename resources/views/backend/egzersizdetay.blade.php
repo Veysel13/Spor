@@ -98,6 +98,11 @@
 
 @endsection
 
-@section('jss')
-
+@section('js')
+    <script>
+        function haro(element) {
+            var deger=element;
+            $(location).attr('href', '/EgzersizDetay/'+deger);
+        }
+    </script>
 @endsection

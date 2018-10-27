@@ -64,7 +64,9 @@
                                                     <th>Program Adı</th>
                                                     <th>Hasta Adı</th>
                                                     <th>Eklenme Zamanı</th>
-                                                    <th>Görüntüle</th>
+                                                    <th>Hareketler</th>
+                                                    <th>Planlama</th>
+                                                    <th>Program</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -94,8 +96,13 @@
                                                         <td>{{$planlar[$i][0]->created_at}}</td>
 
 
-                                                        <td><a href="{{url('/hasta_liste/plan/goruntule/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-primary">Görüntüle</a></td>
-
+                                                        <td><a href="{{url('/hasta_liste/plan/goruntule/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-primary btn-sm">Hareketler</a></td>
+                                                        <td>
+                                                            <a href="{{url('/planlama/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-danger btn-sm">Progam Planlaması</a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{url('/planlama/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-warning btn-sm">Progam</a>
+                                                        </td>
                                                     </tr>
 
 

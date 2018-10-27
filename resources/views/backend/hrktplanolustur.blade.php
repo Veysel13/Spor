@@ -10,7 +10,7 @@
                         <h4  class="mb0">Hareket Planı Oluştur</h4>
 
 
-                        <div align="right">
+                        <div align="right" class="hastaekle">
                             <a   href="/hastakayitformu"><button  type="submit" class="btn btn-warning bnt-xs">Hasta ekle</button></a>
                         </div>
 
@@ -23,10 +23,6 @@
                                         <li>{{$error}}</li>
 
                                     @endforeach
-
-
-
-
                                 </ul>
                             </div>
 
@@ -38,11 +34,12 @@
 
                             <div  id="tum-hareketler">
 
-                                <div id="haftalık-tekrarlar" class="select">
+                            <div id="haftalık-tekrarlar" class="select">
 
-                                    Haftalık tekrar :
+                                   Haftalık T. :
+
                                     <select name="haftalik_tekrar">
-                                        <option value="">Seçiniz</option>
+
                                         <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 1") selected @endif @endif value="Haftada 1">Haftada 1</option>
                                         <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 2") selected @endif @endif value="Haftada 2">Haftada 2</option>
                                         <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 3") selected @endif @endif value="Haftada 3">Haftada 3</option>
@@ -53,12 +50,17 @@
                                     </select>
 
                                 </div>
-                                <div id="gunluk-tekrarlar" class="select">
 
-                                    Günlük tekar :
+
+                                <br class="asagiyaatma">
+
+                               <div id="gunluk-tekrarlar" class="select">
+
+                                   Günlük T. :
+
                                     <select name="gunluk_tekrar">
-                                        <option value="">Seçiniz</option>
-                                        <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 1") selected @endif @endif value="Günde 1">Günde 1</option>
+
+                                        <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 1") selected @endif @else selected @endif value="Günde 1">Günde 1</option>
                                         <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 2") selected @endif @endif value="Günde 2">Günde 2</option>
                                         <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 3") selected @endif @endif value="Günde 3">Günde 3</option>
                                         <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 4") selected @endif @endif value="Günde 4">Günde 4</option>
@@ -69,19 +71,27 @@
                                 </div>
 
 
-
                                 <div id="set-tekrarlar" >
 
                                     Set :
                                     <input type="number" @if(isset($settekrar)) value="{{$settekrar}}" @endif name="set_tekrar" id="setbilgisi" min="0">
 
                                 </div>
+
+
+                                <br class="asagiyaatma">
+                                <br class="asagiyaatma">
+                                <br class="asagiyaatma">
+
                                 <div id="tekrar-tekrarlar" >
 
                                     Tekrar:
                                     <input type="number" @if(isset($tekrartekrar)) value="{{$tekrartekrar}}" @endif name="tekrar_tekrar" id="setbilgisi" min="0">
 
                                 </div>
+
+
+                                <br class="asagiyaatma">
 
 
                                 <div id="dinlenme-tekrarlar" >
@@ -92,8 +102,8 @@
                                 </div>
 
 
-                                    <button style="font-size: 11px"  type="submit" id="tumhareketlerbutton" class="btn btn-danger btn-xs">Tüm Hareketlere Uygula *</button>
-
+                                    <button id="tumhareketlereuygula" style="font-size: 11px"  type="submit" id="tumhareketlerbutton" class="btn btn-danger btn-xs">Tüm Hareketlere Uygula *</button>
+                                <button id="tumhareketlereuygulaplus"   type="submit" id="tumhareketlerbutton" class="btn btn-danger btn-xs"><i class="fa fa-plus"></i>  *</button>
                             </div>
 
 
@@ -154,10 +164,7 @@
                                             <option  ><?php echo $plan[0]->plan_ismi;?></option>
                                         @endforeach
                                     </select>
-
-
-                                        <button style="margin-left: 40px;" type="submit" class="btn-success btn-xs">Hazir Planı  Ata</button>
-
+                                        <button   type="submit" class="btn-success btn-xs hazirplan">Hazir Planı  Ata</button>
                                 </div>
 
                         </form>
@@ -186,12 +193,21 @@
                                         <input type="date" required @if(isset( $id['baslangic_tarihi'])) value="{{$id['baslangic_tarihi']}}" @else  @endif name="baslangic_tarihi">
                                     </div>
 
+                                    <br class="asagiyaatma">
+                                    <br class="asagiyaatma">
+                                    <br class="asagiyaatma">
+                                    <br class="asagiyaatma">
+
                                     <div id="bitis_tarihi">
                                         <label for="">Program Bitiş Tarihi *:</label>
                                         <br>
                                         <input type="date" required name="bitis_tarihi" @if(isset( $id['bitis_tarihi'])) value="{{$id['bitis_tarihi']}}" @endif>
                                     </div>
 
+                                    <br class="asagiyaatma">
+                                    <br class="asagiyaatma">
+                                    <br class="asagiyaatma">
+                                    <br class="asagiyaatma">
                                     <div id="program_adı">
                                         <label for="">Program Adı *:</label>
                                         <br>
@@ -290,10 +306,17 @@
                                                 <img style="margin-left:15%; ;width:100px; height: 90px; "  src="{{asset($egzersiz[0]->resim)}}" alt="">
                                                 <img style="width:100px; height: 90px; "  src="{{asset($egzersiz[0]->resim_iki)}}" alt="">
 
-                                                <h6 align="center" id="h6_baslik" class="text-black">{{$egzersiz[0]->egzersiz_isim}}</h6>
 
+
+                                                <h6 onclick="haro('{{$egzersiz[0]->egzersiz_isim}}')"  align="center" id="h6_baslik" class="text-black">{{$egzersiz[0]->egzersiz_isim}}</h6>
+                                                    <script>
+                                                function haro(element) {
+
+                                                var deger=element;
+                                                $(location).attr('href', '/EgzersizDetay/'+deger);
+                                                }
+                                                    </script>
                                                 <div class="widget-content">
-
                                                     <input type="hidden" name="egzersiz-{{$i}}" value="{{$egzersiz[0]->egzersiz_isim}}">
 
                                                     <div id="max-min-set">
@@ -360,10 +383,10 @@
 
                                                     <div id="gunler" class="container left">
                                                         <div class="row input-group">
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-6 col-sm-6 col-6 ">
                                                                 <label for="lebel"> Haftalık T.</label>
                                                             <select name="haftalik_tekrar-{{$i}}">
-                                                                <option value="">Seçiniz</option>
+
                                                                 <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 1") selected @endif @endif  @if(isset( $id['haftalik_tekrar-'.$i])) @if($id['haftalik_tekrar-'.$i]=="Haftada 1") selected @endif @endif value="Haftada 1">Haftada 1</option>
                                                                 <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 2") selected @endif @endif  @if(isset( $id['haftalik_tekrar-'.$i])) @if($id['haftalik_tekrar-'.$i]=="Haftada 2") selected @endif @endif value="Haftada 2">Haftada 2</option>
                                                                 <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 3") selected @endif @endif  @if(isset( $id['haftalik_tekrar-'.$i])) @if($id['haftalik_tekrar-'.$i]=="Haftada 3") selected @endif @endif value="Haftada 3">Haftada 3</option>
@@ -373,11 +396,11 @@
                                                                 <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Her gün") selected @endif @endif    @if(isset( $id['haftalik_tekrar-'.$i])) @if($id['haftalik_tekrar-'.$i]=="Her gün") selected @endif @endif  value="Her gün">Her gün</option>
                                                             </select>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-6 col-sm-6 col-6">
                                                                 <label for="label">Günlük T.</label>
                                                             <select name="gunluk_tekrar-{{$i}}">
-                                                                <option value="">Seçiniz</option>
-                                                                <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 1") selected @endif @endif  @if(isset( $id['gunluk_tekrar-'.$i]))  @if($id['gunluk_tekrar-'.$i]=="Günde 1") selected @endif @endif value="Günde 1">Günde 1</option>
+
+                                                                <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 1") selected @endif @endif  @if(isset( $id['gunluk_tekrar-'.$i]))  @if($id['gunluk_tekrar-'.$i]=="Günde 1") selected @endif @else selected @endif value="Günde 1">Günde 1</option>
                                                                 <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 2") selected @endif @endif  @if(isset( $id['gunluk_tekrar-'.$i]))  @if($id['gunluk_tekrar-'.$i]=="Günde 2") selected @endif @endif value="Günde 2">Günde 2</option>
                                                                 <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 3") selected @endif @endif  @if(isset( $id['gunluk_tekrar-'.$i]))  @if($id['gunluk_tekrar-'.$i]=="Günde 3") selected @endif @endif value="Günde 3">Günde 3</option>
                                                                 <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 4") selected @endif @endif  @if(isset( $id['gunluk_tekrar-'.$i]))  @if($id['gunluk_tekrar-'.$i]=="Günde 4") selected @endif @endif value="Günde 4">Günde 4</option>
@@ -442,7 +465,6 @@
 @section('js')
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-
 
       <script>
         $('.btn-number').click(function(e){
@@ -532,43 +554,6 @@
 
     </script>
 
-    <!--function formgonder(){
-
-            var data = {},inp;
-            var val;
-            var id;
-            var idler = ["set", "tekrar", "dinlenme"];
-
-            //optiondan gelen veriyi aliyoruz
-            var option = document.getElementById('combobox');
-            data['combobox']=option.value;
-
-
-            for(var j = 0; j < idler.length; j++){
-                for(var i = 1; i <= parseInt("{{count($egzersizler_sayi)}}"); i++){
-                    id = idler[j] + "-" + i;
-                    inp = document.getElementsByName(id)[0];
-                    val = inp.value;
-                    data[id] = val;
-                }
-            }
-
-            data["_token"] = "{{csrf_token()}}";
-
-            $.ajax({
-                type: "POST",
-                url: "{{url('/egzersizplan')}}",
-                data: data
-            }).then(function(response) {
-                if(response.result=="dogru"){
-                    alert('kaydiniz gerceklesmistir');
-                }else{
-                    alert('!kaydiniz gerceklesmemistir');
-                }
-               console.log(response);
-            });
-        }
--->
     <!--combobax hasta isinlerini gostermek icin scriptler-->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -857,6 +842,9 @@
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://resources/demos/style.css">
+    <link rel="stylesheet" href="/css/hpo.css">
+    <link rel="stylesheet" href="/css/custom.css">
+
     <style>
         .custom-combobox {
             position: relative;
@@ -873,252 +861,24 @@
             margin: 0;
             padding: 5px 10px;
         }
-    </style>
 
-    <!--tab menuler ıcın-->
-
-    <style>
-
-
-
-        #wiget{
-            float: left;
-            width:280px;
-            margin-left:30px;
-            margin-bottom: 30px;
-            border-radius: 10px;
-            font-family: Arial;
-            color: black;
-            background-color: aliceblue;
-
-        }
-
-
-        #max-min-set{
-            width: 100px;
-            height: 30px;
-            margin-top: -30px;
-
-
-
-        }
-
-
-        #max-min-tekrar{
-            width: 100px;
-            height: 30px;
-            margin-top:-30px ;
-            margin-left: 150px;
-
-
-        }
-
-        #max-min-dinlen{
-            width: 100px;
-            height: 30px;
-            margin-top:50px ;
-            margin-left: 70px;
-
-        }
-
-        #gunler{
-            margin-top: 50px;
-
-        }
-
-        #haftalık-tekrarlar{
-
-            float: left;
-            margin-right: 50px;
-        }
-
-        #gunluk-tekrarlar{
-            margin-right: 40px;
-           margin-bottom: 25px;
-        }
-
-        #tum-hareketler{
-
-
-             margin-top: 30px;
-             margin-bottom: 50px;
-
-         }
-
-        #tum-hareketler2{
-
-
-            margin-top: 30px;
-            margin-bottom: 50px;
-
-
-        }
-        #tabmenu1{
-           height: 100%;
-           width:100%;
-            left: 15px;
-            background-color: rgba(21, 99, 111, 0.11);
-            border-radius: 10px;
-        }
-
-
-        input[type=submit]:hover {
-            background-color: #76a07c;
-        }
-
-        input[type=date]{
-
-            width: 200px;
-            border-radius: 8px;
-            height: 38px;
-        }
-        input[name=program_adi]{
-
-            width: 200px;
-            border-radius: 8px;
-            height: 38px;
-        }
-
-        .select{
-            font-family: Arial;
-            font-size: 19px;
-        }
-
-        .ui-widget{
-            font-family: Arial;
-            font-size: 17px;
-
-        }
-
-
-        #baslangıc_tarihi{
-            float: left;
-            font-size: 18px;
-            margin-right: 100px;
-
-
-        }
-        #bitis_tarihi{
-            float: left;
-            font-size: 18px;
-            margin-right: 100px;
-        }
-        #program_adı{
-            font-size: 18px;
-
-        }
-
-        #set-tekrarlar{
-             float: left;
-            color: black;
-            font-size: 20px;
-
-         }
-        #tekrar-tekrarlar{
-            float: left;
-            font-size: 20px;
-        }
-
-
-        input[id=setbilgisi]{
-            width: 144px;
-            border-radius: 8px;
-            height: 40px;
-            margin-right: 30px;
-        }
-        #dinlenme-tekrarlar{
-             float: left;
-             margin-right: 75px;
-            font-size: 20px;
-         }
-        button[id=tumhareketlerbutton]{
-
-        }
     </style>
 
 
-    <style>
 
-        #program_bilgisi{
+@endsection
 
-            margin-bottom: 30px;
-            margin-top: 30px;
-            background-color:rgba(21, 99, 111, 0.11);
-            height: 100px;
-            padding: 5px;
-            width: 1040px;
-            border-radius: 10px;
-            color: black;
-            margin-left: 15px;
+
+
+@section('js')
+
+
+    <script>
+
+        function  aa() {
+            alert("sdsd");
         }
 
-
-        #tekrarlar{
-
-            margin-top: 20px;
-            background-color:rgba(21, 99, 111, 0.11);
-            height: 150px;
-            padding: 5px;
-            width: 1040px;
-            border-radius: 10px;
-            color: black;
-            margin-left: 15px;
-        }
-
-        select[name=gunluk_tekrar]{
-
-            width: 200px;
-            border-radius: 8px;
-            height: 38px;
-        }
-
-
-        select[name=haftalik_tekrar]{
-
-            width: 200px;
-            height: 38px;
-            border-radius: 8px;
-
-        }
-
-        #set_tekrarları{
-
-            margin-top: 20px;
-            background-color:rgba(21, 99, 111, 0.11);
-            height: 100px;
-            padding: 5px;
-            width: 1040px;
-            border-radius: 10px;
-            color: black;
-            margin-left: 15px;
-        }
-    </style>
-
-    <style>
-
-        #hazir_planlaricin{
-
-            background-color:rgba(21, 99, 111, 0.11);
-             height: 100px;
-            padding: 30px;
-            width: 1040px;
-            border-radius: 10px;
-            align:center;
-            color: black;
-            margin-left: 15px;
-        }
-
-        #hasta_combabox{
-            background-color:rgba(21, 99, 111, 0.11);
-            height: 100px;
-            padding: 30px;
-            width: 1040px;
-            border-radius: 10px;
-            align:center;
-            color: black;
-            margin-left: 15px;
-        }
-
-    </style>
+    </script>
 
 @endsection

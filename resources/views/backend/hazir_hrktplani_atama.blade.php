@@ -1,22 +1,13 @@
 @extends('backend.app')
 @section('icerik')
-
-
     <div class="content">
-
-
-
         <div class="page-title pt30 pb30">
             <div class="row">
                 <div class="col-sm-12">
-
                     <h4  class="mb0">Hareket Planı Oluştur</h4>
-
-
                     <div align="right">
                         <a   href="/hastakayitformu"><button  type="submit" class="btn btn-warning bnt-xs">Hasta ekle</button></a>
                     </div>
-
 
                     @if($errors->any())
 
@@ -24,12 +15,7 @@
                             <ul>
                                 @foreach($errors->all() as $error)
                                     <li>{{$error}}</li>
-
                                 @endforeach
-
-
-
-
                             </ul>
                         </div>
 
@@ -44,9 +30,8 @@
 
                             <div id="haftalık-tekrarlar" class="select">
 
-                                Haftalık tekrar
+                                Haftalık T. :
                                 <select name="haftalik_tekrar">
-                                    <option value="">Seçiniz</option>
                                     <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 1") selected @endif @endif value="Haftada 1">Haftada 1</option>
                                     <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 2") selected @endif @endif value="Haftada 2">Haftada 2</option>
                                     <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 3") selected @endif @endif value="Haftada 3">Haftada 3</option>
@@ -57,11 +42,12 @@
                                 </select>
 
                             </div>
+
+                            <br class="asagiyaatma">
                             <div id="gunluk-tekrarlar" class="select">
 
-                                Günlük tekar
+                                Günlük T. :
                                 <select name="gunluk_tekrar">
-                                    <option value="">Seçiniz</option>
                                     <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 1") selected @endif @endif value="Günde 1">Günde 1</option>
                                     <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 2") selected @endif @endif value="Günde 2">Günde 2</option>
                                     <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 3") selected @endif @endif value="Günde 3">Günde 3</option>
@@ -71,7 +57,6 @@
                                 </select>
 
                             </div>
-
 
                             <input type="hidden" @if(isset($_GET['combobox_plan'])) value="{{$_GET['combobox_plan']}}" @endif name="combobox_plan">
 
@@ -99,7 +84,7 @@
                                 @endforeach
                             </select>
 
-                            <button style="margin-left: 40px;" type="submit" class="btn-success btn-xs">Hazir Plani  Ata</button>
+                            <button  style="margin-left: 40px;" type="submit" class="btn-success btn-xs hazirplan">Hazir Plani  Ata</button>
                         </div>
 
 
@@ -121,11 +106,21 @@
                                 <input  required type="date" @if(isset( $id['baslangic_tarihi'])) value="{{$id['baslangic_tarihi']}}" @endif name="baslangic_tarihi">
                             </div>
 
+                            <br class="asagiyaatma">
+                            <br class="asagiyaatma">
+                            <br class="asagiyaatma">
+                            <br class="asagiyaatma">
+
                             <div id="bitis_tarihi">
                                 <label for="">Program Bitiş Tarihi:</label>
                                 <br>
                                 <input  required type="date" name="bitis_tarihi" @if(isset( $id['bitis_tarihi'])) value="{{$id['bitis_tarihi']}}" @endif>
                             </div>
+
+                            <br class="asagiyaatma">
+                            <br class="asagiyaatma">
+                            <br class="asagiyaatma">
+                            <br class="asagiyaatma">
 
                             <div id="program_adı">
                                 <label for="">Program Adı:</label>
@@ -159,6 +154,11 @@
             </div>
         </div><!--page title-->
 
+
+        <div align="right" id="ilave_buton">
+            <button type="submit" class="btn btn-success">Programı Kaydet</button>
+        </div>
+        <br>
 
         <?php $i=0;
         $j=1;
@@ -231,7 +231,9 @@
 
                                                 <div id="wiget" >
                                                     <div >
-                                                        <img width="90" height="90" src="{{asset($egzersiz[0]->resim)}}" alt="">
+                                                        <img style="margin-left:15%; ;width:100px; height: 90px; "  src="{{asset($egzersiz[0]->resim)}}" alt="">
+                                                        <img style="width:100px; height: 90px; "  src="{{asset($egzersiz[0]->resim_iki)}}" alt="">
+
                                                         <h6 align="center" class="text-black">{{$egzersiz[0]->egzersiz_isim}}</h6>
 
 
@@ -302,11 +304,13 @@
 
                                                             </div>
 
-                                                            <div id="gunler" class="left">
-                                                                <div class="input-group">
-                                                                    Haftalık tekrar
+                                                            <div id="gunler" class="container left">
+                                                                <div class="row input-group">
+                                                                    <div class="col-md-6 col-sm-6 col-6">
+
+
+                                                                    Haftalık T.
                                                                     <select name="haftalik_tekrar-{{$i}}">
-                                                                        <option value="">Seçiniz</option>
                                                                         <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 1") selected @endif @endif  @if($olan_hareket!=null) @if($olan_hareket->haftalik_tekrar=="Haftada 1") selected @endif @endif value="Haftada 1">Haftada 1</option>
                                                                         <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 2") selected @endif @endif  @if($olan_hareket!=null) @if($olan_hareket->haftalik_tekrar=="Haftada 2") selected @endif @endif value="Haftada 2">Haftada 2</option>
                                                                         <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 3") selected @endif @endif  @if($olan_hareket!=null) @if($olan_hareket->haftalik_tekrar=="Haftada 3") selected @endif @endif value="Haftada 3">Haftada 3</option>
@@ -315,10 +319,10 @@
                                                                         <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Haftada 6") selected @endif @endif  @if($olan_hareket!=null) @if($olan_hareket->haftalik_tekrar=="Haftada 6") selected @endif @endif value="Haftada 6">Haftada 6</option>
                                                                         <option @if(isset($haftalik_tekrar))@if($haftalik_tekrar=="Her gün") selected @endif @endif    @if($olan_hareket!=null) @if($olan_hareket->haftalik_tekrar=="Her gün") selected @endif @endif  value="Her gün">Her gün</option>
                                                                     </select>
-
-                                                                    Günlük tekar
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-6 col-6">
+                                                                    Günlük T.
                                                                     <select name="gunluk_tekrar-{{$i}}">
-                                                                        <option value="">Seçiniz</option>
                                                                         <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 1") selected @endif @endif  @if($olan_hareket!=null) @if($olan_hareket->gunluk_tekrar=="Günde 1") selected @endif @endif value="Günde 1">Günde 1</option>
                                                                         <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 2") selected @endif @endif  @if($olan_hareket!=null) @if($olan_hareket->gunluk_tekrar=="Günde 2") selected @endif @endif value="Günde 2">Günde 2</option>
                                                                         <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 3") selected @endif @endif  @if($olan_hareket!=null) @if($olan_hareket->gunluk_tekrar=="Günde 3") selected @endif @endif value="Günde 3">Günde 3</option>
@@ -326,6 +330,7 @@
                                                                         <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 5") selected @endif @endif  @if($olan_hareket!=null) @if($olan_hareket->gunluk_tekrar=="Günde 5") selected @endif @endif value="Günde 5">Günde 5</option>
                                                                         <option  @if(isset($gunluk_tekrar))@if($gunluk_tekrar=="Günde 6") selected @endif @endif  @if($olan_hareket!=null) @if($olan_hareket->gunluk_tekrar=="Günde 6") selected @endif @endif value="Günde 6">Günde 6</option>
                                                                     </select>
+                                                                    </div>
                                                                 </div>
                                                             </div>
 
@@ -340,48 +345,22 @@
                                         @endif
 
                                     @endforeach
-
-
-
                                 </div>
-
                             </div>
-
                         @endfor
                     </div>
-
                 </div>
-
-
-
-
-
-
-
-
-
                 <!-- <button class="btn btn-success btn-xs" type="button" onclick="formgonder()" name="deger">Gönder</button>-->
-
-
 
             </div>
         @endif
 
         <br>
-        <div style="margin-left: 15px;"><button type="submit" class="btn btn-success">Kaydet</button></div>
-
+        <div style="margin-left: 15px;"><button type="submit" class="btn btn-success">Programı Kaydet</button></div>
 
         </form>
 
-
-
-
-
     </div>
-
-
-
-
 
 
 @endsection
@@ -829,195 +808,70 @@
 
 
 
-    //tab menuler ıcın
+
+
+    <link rel="stylesheet" href="/css/hpo.css">
+    <link rel="stylesheet" href="/css/custom.css">
 
     <style>
 
-
-        #wiget{
-            float: left;
-            width:280px;
-            margin-left:30px;
-            margin-bottom: 30px;
-            border-radius: 10px;
-            font-family: Arial;
-            color: black;
-
-            background-color: aliceblue;
-
-        }
-        #max-min-set{
-            width: 100px;
-            height: 30px;
-            margin-top: -30px;
-
-
-
-        }
-
-
-        #max-min-tekrar{
-            width: 100px;
-            height: 30px;
-            margin-top:-30px ;
-            margin-left: 150px;
-
-
-        }
-
-        #max-min-dinlen{
-            width: 100px;
-            height: 30px;
-            margin-top:50px ;
-            margin-left: 70px;
-
-        }
-
-        #gunler{
-            margin-top: 50px;
-
-        }
-
-        #haftalık-tekrarlar{
-
-            float: left;
-            margin-right: 50px;
-        }
-
-        #gunluk-tekrarlar{
-            margin-right: 40px;
-            float: left;
-        }
-
-        #tum-hareketler{
-
-
-            margin-top: 30px;
-            margin-bottom: 50px;
-
-        }
-        #tabmenu1{
-            height: 100%;
-            width:100%;
-            left: 15px;
-            background-color: rgba(21, 99, 111, 0.11);
-            border-radius: 10px;
-        }
-
-
-        input[type=submit]:hover {
-            background-color: #76a07c;
-        }
-
-        input[type=date]{
-
-            width: 200px;
-        }
-        input[name=program_adi]{
-
-            width: 200px;
-        }
-
-        .select{
-            font-family: Arial;
-            font-size: 19px;
-        }
-
-        .ui-widget{
-            font-family: Arial;
-            font-size: 17px;
-
-        }
-
-        #program_bilgisi{
-            margin-bottom: 30px;
-            margin-top: 30px;
-        }
-        #baslangıc_tarihi{
-            float: left;
-            font-size: 18px;
-            margin-right: 40px;
-
-
-        }
-        #bitis_tarihi{
-            float: left;
-            font-size: 18px;
-            margin-right: 40px;
-        }
-        #program_adı{
-            font-size: 18px;
-        }
-
-
-    </style>
-
-    <style>
-
-        #hazir_planlaricin{
-
-            background-color:rgba(21, 99, 111, 0.11);
-            height: 100px;
-            padding: 30px;
-            width: 1040px;
-            border-radius: 10px;
-            align:center;
-            color: black;
-            margin-left: 15px;
-        }
-
-        #hasta_combabox{
-            background-color:rgba(21, 99, 111, 0.11);
-            height: 100px;
-            padding: 30px;
-            width: 1040px;
-            border-radius: 10px;
-            align:center;
-            color: black;
-            margin-left: 15px;
-        }
-
-
-        #program_bilgisi{
-
-            margin-bottom: 30px;
-            margin-top: 30px;
-            background-color:rgba(21, 99, 111, 0.11);
-            height: 100px;
-            padding: 5px;
-            width: 1040px;
-            border-radius: 10px;
-            color: black;
-            margin-left: 15px;
-        }
-
-
-        #tekrarlar{
+        #tekrarlar {
             margin-top: 20px;
-            background-color:rgba(21, 99, 111, 0.11);
-            height: 100px;
+            background-color: rgba(21, 99, 111, 0.11);
+            height: 170px;
             padding: 5px;
-            width: 1040px;
+            width: 100%;
             border-radius: 10px;
             color: black;
             margin-left: 15px;
         }
 
-        select[name=gunluk_tekrar]{
-
-            width: 200px;
-            border-radius: 8px;
-            height: 38px;
+        @media (max-width: 576px) and (min-width: 300px){
+            #tekrarlar {
+                margin-top: 20px;
+                background-color: rgba(21, 99, 111, 0.11);
+                height: 250px;
+                padding: 10px;
+                width: 104%;
+                border-radius: 10px;
+                color: black;
+                margin-left: 15px;
+            }
         }
 
 
-        select[name=haftalik_tekrar]{
+        @media (max-width: 576px) and (min-width: 300px) {
+            #hazir_planlaricin {
+                background-color: rgba(21, 99, 111, 0.11);
+                height: 160px;
+                padding: 30px;
+                width: 104%;
+                border-radius: 10px;
+                align: center;
+                color: black;
+                margin-left: 15px;
+            }
+        }
 
-            width: 200px;
-            height: 38px;
-            border-radius: 8px;
+
+        @media (max-width: 576px) and (min-width: 300px) {
+            .hazirplan {
+                margin-left: 40px;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) and (min-width: 576px) {
+            #tekrarlar {
+                margin-top: 20px;
+                background-color: rgba(21, 99, 111, 0.11);
+                height: 182px;
+                padding: 5px;
+                width: 100%;
+                border-radius: 10px;
+                color: black;
+            }
         }
 
     </style>
-
 @endsection

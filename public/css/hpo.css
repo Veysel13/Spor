@@ -1,0 +1,248 @@
+
+
+#wiget{
+    float: left;
+    width:280px;
+    margin-left:30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    font-family: Arial;
+    color: black;
+    background-color: aliceblue;
+
+}
+
+
+
+#max-min-set{
+    width: 100px;
+    height: 30px;
+    margin-top: -30px;
+
+
+
+}
+
+
+#max-min-tekrar{
+    width: 100px;
+    height: 30px;
+    margin-top:-30px ;
+    margin-left: 150px;
+
+
+}
+
+#max-min-dinlen{
+    width: 100px;
+    height: 30px;
+    margin-top:50px ;
+    margin-left: 70px;
+
+}
+
+#gunler{
+    margin-top: 50px;
+
+}
+
+#haftalık-tekrarlar{
+
+    float: left;
+    margin-right: 50px;
+}
+
+#gunluk-tekrarlar{
+    margin-right: 40px;
+    margin-bottom: 25px;
+}
+
+#tum-hareketler{
+
+
+    margin-top: 30px;
+    margin-bottom: 50px;
+
+}
+
+#tum-hareketler2{
+
+
+    margin-top: 30px;
+    margin-bottom: 50px;
+
+
+}
+#tabmenu1{
+    height: 100%;
+    width:100%;
+    left: 15px;
+    background-color: rgba(21, 99, 111, 0.11);
+    border-radius: 10px;
+}
+
+
+input[type=submit]:hover {
+    background-color: #76a07c;
+}
+
+input[type=date]{
+
+    width: 200px;
+    border-radius: 8px;
+    height: 38px;
+}
+input[name=program_adi]{
+
+    width: 200px;
+    border-radius: 8px;
+    height: 38px;
+}
+
+.select{
+    font-family: Arial;
+    font-size: 19px;
+}
+
+.ui-widget{
+    font-family: Arial;
+    font-size: 17px;
+
+}
+
+
+#baslangıc_tarihi{
+    float: left;
+    font-size: 18px;
+    margin-right: 100px;
+
+
+}
+#bitis_tarihi{
+    float: left;
+    font-size: 18px;
+    margin-right: 100px;
+}
+#program_adı{
+    font-size: 18px;
+
+}
+
+#set-tekrarlar{
+    float: left;
+    color: black;
+    font-size: 20px;
+
+}
+#tekrar-tekrarlar{
+    float: left;
+    font-size: 20px;
+}
+
+
+input[id=setbilgisi]{
+    width: 144px;
+    border-radius: 8px;
+    height: 40px;
+    margin-right: 30px;
+}
+#dinlenme-tekrarlar{
+    float: left;
+    margin-right: 75px;
+    font-size: 20px;
+}
+button[id=tumhareketlerbutton]{
+
+}
+
+
+
+
+
+#program_bilgisi{
+
+    margin-bottom: 30px;
+    margin-top: 30px;
+    background-color:rgba(21, 99, 111, 0.11);
+    height: 100px;
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    color: black;
+    margin-left: 15px;
+}
+
+
+#tekrarlar{
+
+    margin-top: 20px;
+    background-color:rgba(21, 99, 111, 0.11);
+    height: 150px;
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    color: black;
+    margin-left: 15px;
+}
+
+select[name=gunluk_tekrar]{
+
+    width: 200px;
+    border-radius: 8px;
+    height: 38px;
+}
+
+
+select[name=haftalik_tekrar]{
+
+    width: 200px;
+    height: 38px;
+    border-radius: 8px;
+
+}
+
+#set_tekrarları{
+
+    margin-top: 20px;
+    background-color:rgba(21, 99, 111, 0.11);
+    height: 100px;
+    padding: 5px;
+    width:100%;
+    border-radius: 10px;
+    color: black;
+    margin-left: 15px;
+}
+
+
+
+
+#hazir_planlaricin{
+
+    background-color:rgba(21, 99, 111, 0.11);
+    height: 100px;
+    padding: 30px;
+    width: 100%;
+    border-radius: 10px;
+    align:center;
+    color: black;
+    margin-left: 15px;
+}
+
+#hasta_combabox{
+    background-color:rgba(21, 99, 111, 0.11);
+    height: 100px;
+    padding: 30px;
+    width: 100%;
+    border-radius: 10px;
+    align:center;
+    color: black;
+    margin-left: 15px;
+}
+
+
+input[name=combobox]{
+
+    width: 250px;
+    border-radius: 8px;
+    height: 38px;
+}

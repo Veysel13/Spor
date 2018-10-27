@@ -27,11 +27,12 @@
 
         <h3>Kişisel Bilgiler</h3>
 
-
+            <div class="container">
+                <div class="row">
         <form action="{{url('/hasta_liste/guncelle')}}"  method="post">
 
             {{csrf_field()}}
-            <div id="formmusteri" class="container">
+            <div id="formmusteri" class="container col-md-6 col-sm-12 col-12">
 
                 <div  id="image" onclick="openKCFinder(this)"><div style="margin:5px">@if($hasta->hasta_resim!=null)
                             <img src="{{asset($hasta->hasta_resim)}}"  height="165px" width="140px" alt=""> @else Resim Yuklemek Icin Tiklayiniz... @endif</div></div>
@@ -72,7 +73,7 @@
 
 
 
-            <div id="tabmenu1" class="card">
+            <div id="tabmenu1" class="card col-md-6 col-sm-7 col-12">
                 <div>
 
                     <!-- Nav tabs -->
@@ -179,6 +180,7 @@
                                                 <th>Hasta Adı</th>
                                                 <th>Eklenme Zamanı</th>
                                                 <th>Görüntüle</th>
+                                                <th>Planlama</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -209,8 +211,9 @@
                                                     <td>{{$planlar[$i][0]->created_at}}</td>
 
 
-                                                    <td><a href="{{url('/hasta_liste/plan/goruntule/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-primary">Görüntüle</a></td>
-
+                                                    <td><a href="{{url('/hasta_liste/plan/goruntule/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-primary btn-sm">Hareketler</a></td>
+                                                    <td><a href="{{url('/antrenor/planlama/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-danger btn-sm">Planlama</a></td>
+                                                    <td><a href="{{url('/son/plan/goruntule/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-warning btn-sm">Progam</a></td>
                                                 </tr>
 
 
@@ -243,7 +246,8 @@
             <br> <br>
             <input type="submit" value="Güncelle">
         </form>
-
+                </div>
+            </div>
 
     </div><!--content-->
 
@@ -339,6 +343,15 @@
         }
 
 
+        @media (max-width:768px ){
+            #tabmenu1 {
+                height: 550px;
+                left: -17px;
+                top: 20px;
+                background-color: rgba(21, 99, 111, 0.11);
+                border-radius: 10px;
+            }
+        }
 
 
     </style>
@@ -347,17 +360,8 @@
 
 @section('js')
 
-
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script> CKEDITOR.replace('editor1'); </script>
-
-
-
-
-
-
-
-
 
     <script type="text/javascript">
         function openKCFinder(div) {
@@ -402,32 +406,6 @@
             );
         }
     </script>
-
-    <!--
-    <script>
-
-        $(document).ready(function () {
-
-            $('#nav').children('li').first().children('a').addClass('active')
-                .next().addClass('is-open').show();
-
-            $('#nav').on('click', 'li > a', function() {
-
-                if (!$(this).hasClass('active')) {
-
-                    $('#nav .is-open').removeClass('is-open').hide();
-                    $(this).next().toggleClass('is-open').toggle();
-
-                    $('#nav').find('.active').removeClass('active');
-                    $(this).addClass('active');
-                } else {
-                    $('#nav .is-open').removeClass('is-open').hide();
-                    $(this).removeClass('active');
-                }
-            });
-        });
-
-    </script>-->
 
 
 @endsection

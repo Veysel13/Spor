@@ -10,11 +10,6 @@
                     <h4  class="mb0">Hareket Planı Oluştur</h4>
 
 
-                    <div align="right">
-                        <a   href="/hastakayitformu"><button  type="submit" class="btn btn-warning bnt-xs">Hasta ekle</button></a>
-                    </div>
-
-
                     @if($errors->any())
 
                         <div id="dikkat" class="alert alert-danger">
@@ -75,7 +70,7 @@
                     </div>
 
                 @if(isset($hastalar))
-                        <form id="form" data-parsley-validate class="form-horizontal form-label-left"  enctype="multipart/form-data" method="get" action="{{url('/egzersizplan_session/'.$set_sirasi.'/'.$hasta_id)}}"  >
+                        <form id="form" data-parsley-validate class="form-horizontal form-label-left"  enctype="multipart/form-data" method="post" action="{{url('/egzersizplan_session/'.$set_sirasi.'/'.$hasta_id)}}"  >
 
                             {{csrf_field()}}
 
@@ -125,6 +120,10 @@
             </div>
         </div><!--page title-->
 
+        <div align="right" id="ilave_buton">
+            <button type="submit" class="btn btn-success">Programı Kaydet</button>
+        </div>
+        <br>
 
         <?php $i=0;
         $j=1;
@@ -339,7 +338,7 @@
             </div>
         @endif
 
-        <button type="submit" class="btn btn-success">Kaydet</button>
+        <button style="margin-left: 18px;margin-top: 15px;" type="submit" class="btn btn-success">Programı Kaydet</button>
         </form>
 
 
@@ -766,7 +765,7 @@
             background-color:rgba(21, 99, 111, 0.11);
             height: 100px;
             padding: 5px;
-            width: 950px;
+            width: 100%;
             border-radius: 10px;
             color: black;
             margin-left: 15px;
@@ -806,7 +805,7 @@
             background-color:rgba(21, 99, 111, 0.11);
             height: 100px;
             padding: 5px;
-            width: 950px;
+            width:100%;
             border-radius: 10px;
             color: black;
             margin-left: 15px;
@@ -832,7 +831,7 @@
             background-color:rgba(21, 99, 111, 0.11);
             height: 100px;
             padding: 30px;
-            width: 950px;
+            width: 100%;
             border-radius: 10px;
             align:center;
             color: black;

@@ -58,8 +58,9 @@
                         <div class="card-content pb20">
                             <p class="text-muted font-13 m-b-30">
                             </p>
-                            <?php $hasta_id=\App\Hastalar::find($id['hasta_id']);
+                            <?php   $hasta_id=\App\Hastalar::find($id['hasta_id']);
                                   $ekleyen_id=\App\User::find($id['ekleyen_id']);
+
                             ?>
 
                             <div id="eklenme_bilgileri">
