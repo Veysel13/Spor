@@ -272,11 +272,9 @@
 
         }
 
-        #musteri_plan {
 
-        }
 
-        @media (max-width:768px ){
+        @media (max-width:768px ) {
             #tabmenu1 {
                 height: 550px;
                 left: -17px;
@@ -297,14 +295,6 @@
 
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script> CKEDITOR.replace('editor1'); </script>
-
-
-
-
-
-
-
-
 
    <script type="text/javascript">
         function openKCFinder(div) {
@@ -349,32 +339,5 @@
             );
         }
     </script>
-
-    <!--
-    <script>
-
-        $(document).ready(function () {
-
-            $('#nav').children('li').first().children('a').addClass('active')
-                .next().addClass('is-open').show();
-
-            $('#nav').on('click', 'li > a', function() {
-
-                if (!$(this).hasClass('active')) {
-
-                    $('#nav .is-open').removeClass('is-open').hide();
-                    $(this).next().toggleClass('is-open').toggle();
-
-                    $('#nav').find('.active').removeClass('active');
-                    $(this).addClass('active');
-                } else {
-                    $('#nav .is-open').removeClass('is-open').hide();
-                    $(this).removeClass('active');
-                }
-            });
-        });
-
-    </script>-->
-
 
 @endsection

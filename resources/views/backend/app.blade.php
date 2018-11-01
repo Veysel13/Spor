@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/css/sweetalert2.min.css">
    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
 
     @yield('css')
 </head>
@@ -608,6 +609,9 @@
 <script type="text/javascript" src="/Back/js/plugins/plugins.js"></script>
 <script type="text/javascript" src="/Back/js/assan.custom.js"></script>
 <script src="/js/sweetalert2.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
 <script>
     function sil(r,id) {
         var sira=r.parentNode.parentNode.rowIndex;

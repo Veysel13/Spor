@@ -11,7 +11,7 @@
 
 
                 <form  method="" action="{{url('/hazir/egzersizplan')}}">
-                    <div align="right" class="col-md-6 col-sm-6 col-xs-12">
+                    <div align="right" style="margin-bottom: 30px" class="col-md-6 col-sm-6 col-xs-12">
                         <button  type="submit" class="btn btn-warning bnt-xs">Hazır Plan Ekle</button>
                     </div>
                 </form>
@@ -186,19 +186,10 @@
     <link href="/Back/js/plugins/data-tables/responsive.bootstrap4.min.css" rel="stylesheet">
     <link href="/Back/linearicons/fonts.css" rel="stylesheet">
     <link href="/Back/css/style.css" rel="stylesheet">
-
-
     <link rel="stylesheet" href="/css/sweetalert2.min.css">
-
-
-
-
 @endsection
 
 @section('js')
-
-
-
     <script type="text/javascript" src="/Back/js/plugins/data-tables/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="/Back/js/plugins/data-tables/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="/Back/js/plugins/data-tables/dataTables.fixedHeader.min.js"></script>

@@ -34,7 +34,7 @@
 
                             <div  id="tum-hareketler">
 
-                            <div id="haftalık-tekrarlar" class="select">
+                            <div id="haftalık-tekrarlar" class="select22">
 
                                    Haftalık T. :
 
@@ -158,7 +158,7 @@
 
                                 <div class="ui-widget">
                                     <label>Hareket Planı Seciniz : </label>
-                                    <select id="combobox_plan"  name="combobox_plan">
+                                    <select style="width: 300px" id="combobox_plan"  name="combobox_plan" class="select2">
                                         <option value="">Plan İsimleri...</option>
                                         @foreach($planlar as $plan)
                                             <option  ><?php echo $plan[0]->plan_ismi;?></option>
@@ -222,7 +222,7 @@
                     <div id="hasta_combabox">
                         <div class="ui-widget">
                             <label>Hasta İsmi Seciniz <span>*(zorunlu)</span>: </label>
-                            <select id="combobox" required name="combobox">
+                            <select id="combobox" required name="combobox" class="select2">
                                 <option value="">Hasta İsimleri...</option>
                                 @foreach($hastalar as $hasta)
                                     <option @if(isset($id['hasta_id'])) @if($id['hasta_id']==$hasta->id) selected @endif @endif value="{{$hasta->id}}"><?php echo $hasta->hasta_ad."  ".$hasta->hasta_soyad;?></option>
@@ -463,10 +463,110 @@
 @endsection
 
 @section('js')
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-
       <script>
+
+
+          options = [];
+
+          // create an array of select options for a lookup
+          $('.custom-select option').each(function(idx) {
+              options.push({id: $(this).val(), text: $(this).text()});
+          });
+
+
+          $(".custom-select").select2({
+              tags: "true",
+              placeholder: "Select an option",
+              allowClear: true,
+              width: '100%',
+              createTag: function (params) {
+                  var term = $.trim(params.term);
+
+                  if (term === '') {
+                      return null;
+                  }
+
+                  // check whether the term matches an id
+                  var search = $.grep(options, function( n, i ) {
+                      return ( n.id === term || n.text === term); // check against id and text
+                  });
+
+                  // if a match is found replace the term with the options' text
+                  if (search.length)
+                      term = search[0].text;
+                  else
+                      return null; // didn't match id or text value so don't add it to selection
+
+                  return {
+                      id: term,
+                      text: term,
+                      value: true // add additional parameters
+                  }
+              }
+          });
+
+          $('.custom-select').on('select2:select', function (evt) {
+              //console.log(evt);
+              //return false;
+          });
+
+
+
+
+          <!-- Hazır plan atamma aıcın-->
+
+
+
+
+          options = [];
+
+          // create an array of select options for a lookup
+          $('#combobox_plan option').each(function(idx) {
+              options.push({id: $(this).val(), text: $(this).text()});
+          });
+
+
+          $("#combobox_plan").select2({
+              tags: "true",
+              placeholder: "Select an option",
+              allowClear: true,
+              width: '100%',
+              createTag: function (params) {
+                  var term = $.trim(params.term);
+
+                  if (term === '') {
+                      return null;
+                  }
+
+                  // check whether the term matches an id
+                  var search = $.grep(options, function( n, i ) {
+                      return ( n.id === term || n.text === term); // check against id and text
+                  });
+
+                  // if a match is found replace the term with the options' text
+                  if (search.length)
+                      term = search[0].text;
+                  else
+                      return null; // didn't match id or text value so don't add it to selection
+
+                  return {
+                      id: term,
+                      text: term,
+                      value: true // add additional parameters
+                  }
+              }
+          });
+
+          $('#combobox_plan').on('select2:select', function (evt) {
+              //console.log(evt);
+              //return false;
+          });
+
+
+
+
+
+
         $('.btn-number').click(function(e){
                 e.preventDefault();
 
@@ -550,14 +650,17 @@
 
         );
 
-
+        $("#combobox").select2({
+            allowClear:true,
+            placeholder: 'Position'
+        });
 
     </script>
 
     <!--combobax hasta isinlerini gostermek icin scriptler-->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
+   <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+   <!-- <script>
         $( function() {
             $.widget( "custom.combobox", {
                 _create: function() {
@@ -674,7 +777,7 @@
                     // Remove invalid value
                     this.input
                         .val( "" )
-                        .attr( "title", value + "Hasta Eşleşmesi Yapılmadı" )
+                        .attr( "title ", value + " Hasta Eşleşmesi Yapılmadı" )
                         .tooltip( "open" );
                     this.element.val( "" );
                     this._delay(function() {
@@ -813,7 +916,7 @@
                     // Remove invalid value
                     this.input
                         .val( "" )
-                        .attr( "title", value + "Hasta Eşleşmesi Yapılmadı" )
+                        .attr( " title ", value +" Hasta Eşleşmesi Yapılmadı" )
                         .tooltip( "open" );
                     this.element.val( "" );
                     this._delay(function() {
@@ -833,7 +936,7 @@
                 $( "#combobox_plan" ).toggle();
             });
         } );
-    </script>
+    </script>-->
 
 
 @endsection
@@ -844,41 +947,5 @@
     <link rel="stylesheet" href="https://resources/demos/style.css">
     <link rel="stylesheet" href="/css/hpo.css">
     <link rel="stylesheet" href="/css/custom.css">
-
-    <style>
-        .custom-combobox {
-            position: relative;
-            display: inline-block;
-        }
-        .custom-combobox-toggle {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            margin-left: -1px;
-            padding: 0;
-        }
-        .custom-combobox-input {
-            margin: 0;
-            padding: 5px 10px;
-        }
-
-    </style>
-
-
-
-@endsection
-
-
-
-@section('js')
-
-
-    <script>
-
-        function  aa() {
-            alert("sdsd");
-        }
-
-    </script>
 
 @endsection

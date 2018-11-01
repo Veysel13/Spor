@@ -73,7 +73,7 @@
 
 
 
-            <div id="tabmenu1" class="card col-md-6 col-sm-7 col-12">
+            <div id="tabmenu1" class="card col-md-6 col-sm-12 col-12">
                 <div>
 
                     <!-- Nav tabs -->
@@ -343,15 +343,23 @@
         }
 
 
-        @media (max-width:768px ){
+        @media (max-width:768px ) {
             #tabmenu1 {
-                height: 550px;
+                height: 590px;
                 left: -17px;
                 top: 20px;
                 background-color: rgba(21, 99, 111, 0.11);
                 border-radius: 10px;
             }
+
+            #musteri_plan{
+                height: auto;
+                overflow-x: scroll;
+                overflow-y: scroll;
+            }
         }
+
+
 
 
     </style>
