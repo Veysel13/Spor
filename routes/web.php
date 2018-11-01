@@ -30,7 +30,17 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
+Route::get('/eposta', function()
+{
+    $data = ['ad' => 'Tuana Şeyma', 'soyad' => 'Eldem'];
 
+    Mail::send('email', $data, function($message) use($data)
+    {
+        $message->to('veyselakpinar13@gmail.com', $data['ad'])
+            ->subject('Günaydın Kızım!')
+            ->replyTo('veysel@statikyazilim.com.tr', 'Sinan Eldem');
+    });
+});
 
 
 Route::get('/aa', function () {
