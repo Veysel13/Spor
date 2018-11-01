@@ -14,6 +14,25 @@
 
 */
 
+// Password Reset Routes...
+   /* $this->get('password/reset',
+        'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    $this->post('password/email',
+        'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    $this->get('password/reset/{token}',
+        'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+
+   */
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+
+
+
+
 Route::get('/aa', function () {
     return view("auth.login");
 });
@@ -33,6 +52,9 @@ Route::post('/apisetyorum', 'Apicontroller@apisetyorumlari');
 Route::post('/apihastalar', 'Apicontroller@apihasta');
 Route::post('/apikurumlar', 'Apicontroller@apikurum');
 Route::post('/apihastagirisleri', 'Apicontroller@apihastagiris');
+
+
+Route::get('/emailgonder', 'Hareketcontroller@emailgonder');
 
 
 Route::get('/', 'Hareketcontroller@get_giris');

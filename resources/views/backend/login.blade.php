@@ -100,6 +100,7 @@
           </div><!-- end section -->
 
         </div><!-- end .form-body section -->
+        <p style="margin-left: 25px"><a href="/password/reset">Şİfemi Unuttum</a></p>
         <div class="form-footer">
           <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
         </div><!-- end .form-footer section -->

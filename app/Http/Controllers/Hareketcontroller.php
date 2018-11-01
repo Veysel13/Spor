@@ -41,6 +41,10 @@ use Dompdf\Dompdf;
 class Hareketcontroller extends Controller
 {
 
+
+    public function emailgonder(){
+        return view('vendor.notifications.email');
+    }
     public function son_plan_goruntule ($sayi, $id)
     {
 
