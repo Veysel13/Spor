@@ -5,7 +5,6 @@
 
 
 
-
     <div class="content">
 
         @if($errors->any())

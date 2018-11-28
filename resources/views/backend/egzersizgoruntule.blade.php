@@ -43,12 +43,12 @@
 
                                 @if(isset($egzersiz))
 
-                                    <div class="thumbnail" style="width:15%; display: inline-block;">
+                                    <div class="thumbnail row" >
 
-                                        <div class="image view view-first" >
+                                        <div style="margin-top: 50px" class="image view view-first col-md-6" >
 
 
-                                            <img  style="width:100px; display: inline-block;" alt="image"  src="{{asset($egzersiz->resim)}}"/>
+                                            <img  style="width:300px; " alt="image"  src="{{asset($egzersiz->resim)}}"/>
 
 
 
@@ -61,7 +61,7 @@
                                                         <input type="hidden" name="resim" value="{{$egzersiz->egzersiz_isim}}">
 
 
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-times"></i>
+                                                        <button style="width: 300px;" type="submit" class="btn btn-danger"><i class="fa fa-times"></i>
                                                         </button>
                                                     </form>
 
@@ -72,20 +72,20 @@
 
                                         <!--resim iki -->
 
-                                        <div class="thumbnail" style="width:15%; display: inline-block;">
+                                        <div class="thumbnail col-md-6" >
 
-                                            <div class="image view view-first" >
+                                            <div style="margin-top: 50px" class="image view view-first" >
 
-                                                <img  style="width:100px; display: inline-block;" alt="image"  src="{{asset($egzersiz->resim_iki)}}"/>
+                                                <img  style="width:300px; " alt="image"  src="{{asset($egzersiz->resim_iki)}}"/>
 
                                                 <div class="mask">
 
                                                     <div class="tools tools-bottom">
                                                         <form action="{{url('/egzersiz/resim/'.$egzersiz->id)}}" method="get">
 
-                                                            <input type="hidden" name="resim" value="{{$egzersiz->egzersiz_isim}}">
+                                                            <input type="hidden" name="resim_iki" value="{{$egzersiz->egzersiz_isim}}">
 
-                                                            <button type="submit" class="btn btn-danger"><i class="fa fa-times"></i>
+                                                            <button style="width: 300px;" type="submit" class="btn btn-danger"><i class="fa fa-times"></i>
                                                             </button>
                                                         </form>
 
@@ -125,7 +125,7 @@
                                                             <input type="hidden" name="resim" value="{{$egzersiz->egzersiz_isim}}">
 
 
-                                                            <button type="submit" class="btn btn-danger"><i class="fa fa-times"></i>
+                                                            <button style="width: 400px;" type="submit" class="btn btn-danger"><i class="fa fa-times"></i>
                                                             </button>
                                                         </form>
 

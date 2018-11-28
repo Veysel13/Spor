@@ -32,7 +32,7 @@
         <form action="{{url('/hasta_liste/guncelle')}}"  method="post">
 
             {{csrf_field()}}
-            <div id="formmusteri" class="container col-md-6 col-sm-12 col-12">
+            <div id="formmusteri" class="container col-md-3 col-sm-12 col-12">
 
                 <div  id="image" onclick="openKCFinder(this)"><div style="margin:5px">@if($hasta->hasta_resim!=null)
                             <img src="{{asset($hasta->hasta_resim)}}"  height="165px" width="140px" alt=""> @else Resim Yuklemek Icin Tiklayiniz... @endif</div></div>
@@ -73,7 +73,7 @@
 
 
 
-            <div id="tabmenu1" class="card col-md-6 col-sm-12 col-12">
+            <div id="tabmenu1" class="card col-md-8 col-sm-12 col-12">
                 <div>
 
                     <!-- Nav tabs -->
@@ -174,13 +174,14 @@
                                             <tr>
 
 
-                                                <th>S.No</th>
+                                               <!-- <th>S.No</th>-->
                                                 <th>Ekleyen Kişi</th>
                                                 <th>Program Adı</th>
                                                 <th>Hasta Adı</th>
                                                 <th>Eklenme Zamanı</th>
                                                 <th>Görüntüle</th>
                                                 <th>Planlama</th>
+                                                <th>Program</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -203,12 +204,12 @@
 
                                                 <tr>
 
-                                                    <td>{{$i+1}}</td>
+                                                    <!--<td>{{$i+1}}</td>-->
                                                     <td>{{$ekleyen->name}}@if($ekleyen->yetki==1)(Admin)@elseif($ekleyen->yetki==2) (Doktor) @elseif($ekleyen->id==3) (Fizto Terapist) @endif</td>
                                                     <td>{{$planlar[$i][0]->program_adi}}</td>
                                                     <td>{{$hasta_id->hasta_ad." ".$hasta_id->hasta_soyad}}</td>
 
-                                                    <td>{{$planlar[$i][0]->created_at}}</td>
+                                                    <td>{{date("d-m-Y", strtotime($planlar[$i][0]->created_at))}}</td>
 
 
                                                     <td><a href="{{url('/hasta_liste/plan/goruntule/'.$planlar[$i][0]->plan_sayisi.'/'.$planlar[$i][0]->hasta_id)}}" class="btn btn-primary btn-sm">Hareketler</a></td>
@@ -360,6 +361,16 @@
         }
 
 
+        @media (min-width: 776px) and (max-width: 992px) {
+
+            #tabmenu1 {
+                height: 550px;
+                left: -20px;
+                top:20px;
+                background-color: rgba(21, 99, 111, 0.11);
+                border-radius: 10px;
+            }
+        }
 
 
     </style>

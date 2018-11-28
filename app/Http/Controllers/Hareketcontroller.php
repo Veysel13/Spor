@@ -1951,7 +1951,59 @@ class Hareketcontroller extends Controller
         $eskivideo = $eski->video;
 
 
+        if($request['resim'] !=null){
+            $file = $_FILES['resim'];
+            $eskiresim =$file['name'];
+            $tmp_name = $file['tmp_name'];
+            copy($tmp_name, "gallery/" . utf8_encode($eskiresim));
+            $eskiresim ="gallery/".$file['name'];
+        }
+
+
+        if( $request['resim_iki'] !=null){
+            $file = $_FILES['resim_iki'];
+            $eskiresim_iki =$file['name'];
+            $tmp_name = $file['tmp_name'];
+            copy($tmp_name, "gallery/" . utf8_encode($eskiresim_iki));
+            $eskiresim_iki ="gallery/".$file['name'];
+        }
+
+
+        if( $request['video'] !=null){
+            $file = $_FILES['video'];
+            $eskivideo =$file['name'];
+            $tmp_name = $file['tmp_name'];
+            copy($tmp_name, "gallery/" . utf8_encode($eskivideo));
+            $eskivideo ="gallery/".$file['name'];
+        }
+
         Egzersiz::where('egzersiz_isim', $kategori->egzersiz_isim)->delete();
+
+        $baslik = $request['baslik'];
+
+
+        if (Auth::check()) {
+            $id = auth()->user()->id;
+        }
+
+
+        for ($i = 0; $i < count($request['baslik']); $i++) {
+
+            Egzersiz::create([
+                'ekleyen_id' => $id,
+                'egzersiz_isim' => $request['egzersiz_isim'],
+                'aciklama' => $request['aciklama'],
+                'egzersiz_kategori' => $request['egzersiz_kategori'],
+                'egzersiz_hareket' => $baslik[$i],
+                'resim' => $eskiresim,
+                'resim_iki' => $eskiresim_iki,
+                'video' => $eskivideo
+
+            ]);
+        }
+
+
+       /* Egzersiz::where('egzersiz_isim', $kategori->egzersiz_isim)->delete();
 
         $baslik = $request['baslik'];
 
@@ -2062,7 +2114,7 @@ class Hareketcontroller extends Controller
                 ]);
             }
 
-        }
+        }*/
 
         return redirect('/egzersizliste');
 
